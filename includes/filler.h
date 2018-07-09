@@ -6,7 +6,7 @@
 /*   By: tnghondz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 16:24:15 by tnghondz          #+#    #+#             */
-/*   Updated: 2018/07/09 00:31:50 by tnghondz         ###   ########.fr       */
+/*   Updated: 2018/07/09 16:55:00 by mtshisw          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,19 @@ typedef struct	s_map_piece
 	int p_bottom_end;
 	int p_right_end;
 
+	int	add_num;
+	int os_num;
+	int xs_num;
+	int temp_os;
+	int temp_xs;
+
+	char **map;
+	char **piece;
+	char **temp_map;
 
 	int	place_coordinate_x;
 	int	place_coordinate_y;
+	
+
 }				t_map_piece;
 #endif
