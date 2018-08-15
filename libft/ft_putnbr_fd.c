@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnghondz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mtshisw <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/31 02:46:49 by tnghondz          #+#    #+#             */
-/*   Updated: 2018/05/31 03:14:52 by tnghondz         ###   ########.fr       */
+/*   Created: 2018/05/24 18:21:46 by mtshisw           #+#    #+#             */
+/*   Updated: 2018/06/01 16:52:45 by mtshisw          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long	div;
-	char	c;
-	long	temp_n;
+	long num;
 
-	temp_n = (long)n;
-	div = 1;
-	if (n < 0)
+	num = (long)n;
+	if (num < 0)
 	{
 		ft_putchar_fd('-', fd);
-		temp_n *= -1;
+		num = -1 * num;
 	}
-	if (n == 0)
-		ft_putchar_fd('0', fd);
-	while (div <= temp_n)
-		div *= 10;
-	div /= 10;
-	while (div != 0)
+	if (num >= 0 && num <= 9)
+		ft_putchar_fd((num + '0'), fd);
+	else if (num >= 10)
 	{
-		c = (temp_n / div) + 48;
-		ft_putchar_fd(c, fd);
-		temp_n %= div;
-		div /= 10;
+		ft_putnbr_fd((num / 10), fd);
+		ft_putchar_fd(((num % 10) + '0'), fd);
 	}
 }

@@ -3,18 +3,35 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tnghondz <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mtshisw <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/06/24 15:59:34 by tnghondz          #+#    #+#              #
-#    Updated: 2018/06/24 16:10:13 by tnghondz         ###   ########.fr        #
+#    Created: 2018/08/09 09:20:09 by mtshisw           #+#    #+#              #
+#    Updated: 2018/08/09 09:20:13 by mtshisw          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PLAYER_EXEC = tnghondz.filler
+NAME = mtshisw.filler
+CC = gcc -o
+FLAGS = -Wall -Wextra -Werror
+INC = -I ./includes/
+LIB = ./libft/
+SRC = ./srcs/*.c
 
-RCS_DIR		= ./resources
-SRCS_DIR	= ./srcs
-LIBFT_DIR	= ./libft
-INCLUDES	= ./includes
+RM = rm -rf
 
+$(NAME):
+	@make -C $(LIB)
+	@$(CC) $(NAME) $(FLAGS) $(SRC) $(INC) -L libft/ -lft
+	@echo "-- Player Compiled Successfully --"
 
+all: $(NAME)
+
+clean:
+	@make clean -C $(LIB)
+
+fclean:
+	@make fclean -C $(LIB)
+	@$(RM) $(NAME)
+	@echo "-- Player Cleaned --"
+
+re: fclean all
